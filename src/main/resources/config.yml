@@ -1,0 +1,55 @@
+# ──────────────────────────────────────────────
+#  KeyShop configuration
+# ──────────────────────────────────────────────
+
+gui:
+  title: "&8&lKey Shop"
+  rows: 3            # 1 - 6
+
+# Appended to the bottom of each key's lore in the GUI.
+# Placeholders: %price% (formatted by your economy), %raw_price%
+price-lore:
+  - ""
+  - "&7Price: &a%price%"
+  - "&eClick to purchase!"
+
+# How the key is delivered after payment:
+#   item    - gives the player an exact copy of the item saved with /keyshop addkey
+#             (full NBT/PDC kept). Recommended; works with any crate plugin.
+#   command - runs 'purchase-command' from the console instead.
+delivery: item
+
+# Only used when delivery is 'command'.
+# Placeholders: %player%, %key%
+# CrazyCrates syntax: crate give <key_type> <crate_name> <amount> <player>
+# NOTE: %key% must be the CRATE name in CrazyCrates.
+purchase-command: "crate give physical %key% 1 %player%"
+
+sounds:
+  success: ENTITY_EXPERIENCE_ORB_PICKUP
+  error: ENTITY_VILLAGER_NO
+  volume: 1.0
+  pitch: 1.0
+
+messages:
+  prefix: "&8[&6KeyShop&8] "
+  purchase-success: "&aYou purchased &e%key% &afor &e%price%&a."
+  insufficient-funds: "&cYou need &e%price% &cto buy this key (you have &e%balance%&c)."
+  economy-unavailable: "&cNo economy provider is available right now."
+  inventory-full: "&cYour inventory is full. Free a slot and try again (you were not charged)."
+  purchase-failed: "&cThe purchase failed and you were refunded. Contact an admin."
+  no-permission: "&cYou don't have permission to do that."
+  players-only: "&cThis command can only be used by players."
+  hold-item: "&cHold the key item in your main hand first."
+  invalid-price: "&cPrice must be a number greater than 0."
+  invalid-slot: "&cSlot must be a number between 0 and %max%."
+  invalid-name: "&cKey name may only contain letters, numbers, '_' and '-'."
+  slot-taken: "&cSlot &e%slot% &cis already used by key &e%key%&c."
+  key-added: "&aSaved key &e%key% &afor &e%price% &ain slot &e%slot%&a."
+  key-removed: "&aRemoved key &e%key%&a."
+  key-not-found: "&cNo key named &e%key% &cexists."
+  reloaded: "&aConfiguration reloaded (%count% keys)."
+  usage: "&cUsage: /keyshop addkey <key_name> <price> <slot> | removekey <key_name> | reload"
+
+# Managed by /keyshop addkey. Avoid editing 'item-data' by hand.
+keys: {}

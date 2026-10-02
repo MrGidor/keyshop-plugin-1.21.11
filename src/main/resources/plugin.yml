@@ -1,0 +1,22 @@
+name: KeyShop
+version: '${project.version}'
+main: dev.keyshop.KeyShopPlugin
+api-version: '1.21'
+description: GUI shop that sells CrazyCrates keys through Vault.
+authors: [MrGidor]
+depend: [Vault]
+softdepend: [CrazyCrates]
+
+commands:
+  keyshop:
+    description: Open the key shop or manage its keys.
+    usage: /<command> [addkey <key_name> <price> <slot> | removekey <key_name> | reload]
+    aliases: [keys, keyshops]
+
+permissions:
+  keyshop.use:
+    description: Allows opening and buying from the key shop.
+    default: true
+  keyshop.admin:
+    description: Allows managing shop keys.
+    default: op
